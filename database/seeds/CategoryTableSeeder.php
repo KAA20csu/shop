@@ -7,9 +7,4 @@ class CategoryTableSeeder extends Seeder {
         // создать 4 категории
         factory(App\Category::class, 4)->create();
     }
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
 }

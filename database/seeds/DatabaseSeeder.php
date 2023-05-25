@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(CategoryTableSeeder::class);
-        $this->command->info('Таблица категорий загружена данными!!');
+        $this->command->info('Таблица категорий загружена данными!');
 
         $this->call(BrandTableSeeder::class);
         $this->command->info('Таблица брендов загружена данными!');
