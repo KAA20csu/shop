@@ -25,6 +25,10 @@ Route::post('/basket/minus/{id}', 'BasketController@minus')
     ->where('id', '[0-9]+')
     ->name('basket.remove');
 Route::post('/basket/clear', 'BasketController@clear')->name('basket.clear');
+
+Route::get('/basket/success', 'BasketController@success')
+    ->name('basket.success');
+    
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -33,3 +37,5 @@ Route::name('user.')->prefix('user')->group(function () {
     Route::get('index', 'UserController@index')->name('index');
     Auth::routes();
 });
+
+Route::post('/basket/saveorder', 'BasketController@saveOrder')->name('basket.saveorder');

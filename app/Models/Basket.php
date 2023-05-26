@@ -1,9 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Basket;
+use App\Models\Basket;
+use Cookie;
+use App\Models\Order;
 
 class Basket extends Model {
     /**
@@ -77,5 +79,13 @@ class Basket extends Model {
         $this->products()->detach($id);
         // обновляем поле `updated_at` таблицы `baskets`
         $this->touch();
+    }
+
+    public function getAmount() {
+        $amount = 0.0;
+        foreach ($this->products as $product) {
+            $amount = $amount + $product->price * $product->pivot->quantity;
+        }
+        return $amount;
     }
 }
