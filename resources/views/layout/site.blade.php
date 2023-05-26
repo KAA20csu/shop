@@ -52,16 +52,20 @@
     </nav>
 
     <div class="row">
-        <div class="col-md-3">
-            <h4>Разделы каталога</h4>
-            <p>Здесь будут корневые разделы</p>
-            <h4>Популярные бренды</h4>
-            <p>Здесь будут популярные бренды</p>
-        </div>
-        <div class="col-md-9">
-            @yield('content')
-        </div>
+    <div class="col-md-3">
+        @include('layout.part.roots')
+        @include('layout.part.brands')
+        <!--
+        <h4>Разделы каталога</h4>
+        <p>Здесь будут корневые разделы</p>
+        <h4>Популярные бренды</h4>
+        <p>Здесь будут популярные бренды</p>
+        -->
     </div>
+    <div class="col-md-9">
+        @yield('content')
+    </div>
+</div>
 </div>
 </body>
 </html>
