@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
+use App\Models\User;
 use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 10)->create();
+        factory(App\Models\User::class, 10)->create();
 
         $user = User::create([
             'name' => 'admin',

@@ -39,3 +39,13 @@ Route::name('user.')->prefix('user')->group(function () {
 });
 
 Route::post('/basket/saveorder', 'BasketController@saveOrder')->name('basket.saveorder');
+
+Route::group([
+    'as' => 'admin.', 
+    'prefix' => 'admin', 
+    'namespace' => 'Admin', 
+    'middleware' => ['auth', 'admin'] 
+], function () {
+    Route::get('index', 'AdminController')->name('index');
+    Route::resource('role', 'RoleController');
+});

@@ -43,8 +43,14 @@ class LoginController extends Controller
      * Сразу после входа выполняем редирект и устанавливаем flash-сообщение
      */
     protected function authenticated(Request $request, $user) {
-        return redirect()->route('user.index')
-            ->with('success', 'Вы успешно вошли в личный кабинет');
+        $route = 'home';
+        $message = 'Вы успешно вошли в личный кабинет';
+        if ($user->admin) {
+            $route = 'admin.index';
+            $message = 'Вы успешно вошли в панель управления';
+        }
+        return redirect()->route($route)
+            ->with('success', $message);
     }
 
     /**
