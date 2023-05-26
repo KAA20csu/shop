@@ -49,6 +49,9 @@ class OrderController extends Controller {
      */
     public function update(Request $request, Order $order) {
         $order->update($request->all());
+        $order->status_id = $request->all()['status'];
+
+        $order->save();
         return redirect()
             ->route('admin.order.show', ['order' => $order->id])
             ->with('success', 'Заказ был успешно обновлен');

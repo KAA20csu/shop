@@ -8,4 +8,5 @@
         @csrf
         <button type="submit" class="btn btn-primary">Выйти</button>
     </form>
+    <a href="{{ route('home.orders', ['user' => auth()->user()->id ]) }}" >Просмотреть список заказов</a>
 @endsection

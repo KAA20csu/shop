@@ -31,7 +31,12 @@ Route::get('/basket/success', 'BasketController@success')
     
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group([
+    'middleware' => ['auth']
+], function() {
+    Route::get('/home', 'UserController@index')->name('home');
+    Route::get('/orders/{user}', 'UserController@getOrdersByUser')->name('home.orders');
+});
 
 Route::name('user.')->prefix('user')->group(function () {
     Route::get('index', 'UserController@index')->name('index');
@@ -71,4 +76,11 @@ Route::group([
     Route::resource('order', 'OrderController', ['except' => [
         'create', 'store', 'destroy'
     ]]);
+});
+
+Route::group([
+    'middleware' => ['auth']
+], function() {
+    Route::get('/home', 'UserController@index')->name('home');
+    Route::get('/orders/{user}', 'UserController@getOrdersByUser')->name('home.orders');
 });
