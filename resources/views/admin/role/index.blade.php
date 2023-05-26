@@ -1,5 +1,4 @@
 @extends('layout.admin')
-
 @section('content')
     <h1>Все категории</h1>
     <table class="table table-bordered">
@@ -33,5 +32,10 @@
             </td>
         </tr>
         @endforeach
+        <form action="{{ route('admin.role.create') }}" class="text-right">
+            <button class="btn btn-success mb-4 mt-0">
+                    Создать новую роль
+            </button>
+        </form>
     </table>
 @endsection

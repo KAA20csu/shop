@@ -5,12 +5,7 @@
     <div class="row">
         <div class="col-md-6">
             <p><strong>Название:</strong> {{ $role->name }}</p>
-            @isset($role->content)
-                <p>{{ $category->content }}</p>
-            @else
-                <p>Описание отсутствует</p>
-            @endisset
-        </div>
+        
         <div class="col-md-6">
             <img src="https://via.placeholder.com/600x200" alt="" class="img-fluid">
         </div>

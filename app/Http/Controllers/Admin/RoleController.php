@@ -21,7 +21,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.role.create');
     }
 
     /**
@@ -32,12 +32,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
+
+        $role = Role::create($request->all());
+        return redirect()
+            ->route('admin.role.index')
+            ->with('success', 'Новая роль успешно создана');
     }
 
     public function show(Role $role)
     {
-        return view('admin.role.show', compact($role));
+        return view('admin.role.show', compact('role'));
     }
 
     /**
@@ -48,7 +55,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.role.edit', compact('role'));
     }
 
     /**
@@ -60,7 +67,17 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $id = $role->id;
+
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
+
+        $role->update($request->all());
+
+        return redirect()
+            ->route('admin.role.index')
+            ->with('success', 'Роль была успешно отредактирована');
     }
 
     /**
@@ -71,6 +88,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role->delete();
+        return redirect()
+            ->route('admin.role.index')
+            ->with('success', 'Роль успешно удалена');
     }
 }
