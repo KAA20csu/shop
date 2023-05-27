@@ -9,13 +9,11 @@
             <tr>
                 <th width="18%">Дата и время</th>
                 <th width="5%">Статус</th>
-                <th width="18%">Покупатель</th>
                 <th width="18%">Адрес почты</th>
                 <th width="18%">Номер телефона</th>
             </tr>
                 @foreach($orders as $order)
                 <tr>
-                <td>{{ $order->id }}</td>
                 <td>{{ $order->created_at->format('d.m.Y H:i') }}</td>
                 <td>
                     @if ($order->status == 0)
@@ -26,24 +24,8 @@
                         {{ $statuses[$order->status] }}
                     @endif
                 </td>
-                <td>{{ $order->name }}</td>
                 <td><a href="mailto:{{ $order->email }}">{{ $order->email }}</a></td>
                 <td>{{ $order->phone }}</td>
-                <td>
-                    @isset($order->user)
-                        {{ $order->user->name }}
-                    @endisset
-                </td>
-                <td>
-                    <a href="{{ route('admin.order.show', ['order' => $order->id]) }}">
-                        <i class="far fa-eye"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="{{ route('admin.order.edit', ['order' => $order->id]) }}">
-                        <i class="far fa-edit"></i>
-                    </a>
-                </td>
             </tr>
                 @endforeach
         </table>
