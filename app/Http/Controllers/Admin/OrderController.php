@@ -36,7 +36,7 @@ class OrderController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Order $order) {
-        $statuses = Order::STATUS;
+        $statuses = Order::STATUSES;
         return view('admin.order.edit', compact('order', 'statuses'));
     }
 
@@ -49,7 +49,7 @@ class OrderController extends Controller {
      */
     public function update(Request $request, Order $order) {
         $order->update($request->all());
-        $order->status_id = $request->all()['status'];
+        $order->status = $request->all()['status'];
 
         $order->save();
         return redirect()

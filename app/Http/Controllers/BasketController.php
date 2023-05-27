@@ -114,7 +114,7 @@ class BasketController extends Controller {
         $order = Order::create(
             $request->all() + ['amount' => $basket->getAmount(), 'user_id' => $user_id]
         );
-        Mail::to(auth()->user())->send(new OrderShipping($order));
+        //Mail::to(auth()->user())->send(new OrderShipping($order));
         foreach ($basket->products as $product) {
             $order->items()->create([
                 'product_id' => $product->id,

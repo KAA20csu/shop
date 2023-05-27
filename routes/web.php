@@ -53,6 +53,8 @@ Route::group([
 ], function () {
     Route::get('index', 'AdminController')->name('index');
     Route::resource('role', 'RoleController');
+    Route::resource('user', 'UserRoleController');
+    Route::post('/user/saverole', 'UserRoleController@edit')->name('user.edit');
 });
 
 Route::group([

@@ -71,6 +71,11 @@
                 <th></th>
             </tr>
         </table>
+        <form action="{{ route('basket.checkout') }}" class="text-right">
+            <button class="btn btn-success mb-4 mt-0">
+                    Сделать заказ
+            </button>
+        </form>
     @else
         <p>Ваша корзина пуста</p>
     @endif
